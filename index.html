@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+
+    <div class="container py-5">
+        <div class="title text-center mb-5">
+            <h1>Bookmarker</h1>
+        </div>
+        <div class="content py-4">
+            <div class="sub-title text-center mb-4">
+                <h3> 
+                <i class="fa-solid fa-bookmark"></i>
+                    Bookmark your favorite sites 
+                    <i class="fa-solid fa-bookmark"></i>
+                </h3>               
+            </div>
+          
+         
+                <div class="mb-3">
+                  <label for="bookmarkName" class="form-label">
+                    <i class="fa-solid fa-book-bookmark"></i>
+                    Site Name</label>
+                  <input type="text" class="form-control " oninput="testReg()" id="bookmarkName" aria-describedby="emailHelp" placeholder="Bookmark Name">
+                </div>
+                <div class="mb-3">
+                  <label for="websiteUrl" class="form-label">
+                    <i class="fa-solid fa-link"></i>
+                    Site Url</label>
+                  <input oninput="testReg()" type="text" class="form-control" id="websiteUrl" placeholder="Website Url">
+                </div>
+               
+                <button type="submit"  class="rounded-2 orange border-0 m-auto d-block" id="submitBtn" >Submit</button>
+                <button class="update rounded-2 bg-warning border-0 m-auto d-none text-white" id="updateBtn">update</button>
+             
+        </div>
+
+        <table class="bg-white w-100 mt-4 p-5" id="table">
+            <thead>
+                <tr >
+                    <th class="">Index</th>
+                    <th class="">Website Name</th>
+                    <th class="">Visit</th>
+                    <th class="">Delete</th>
+                    <th class="">Update</th>
+
+                </tr>
+            </thead>
+            
+        </table>
+    </div>
+
+
+    <div id="demo" class="d-none">
+        <div class="bg-white p-4 position-absolute rounded-2 top-50 start-50 translate-middle w-50">
+            <button onclick="closePopup()" class="bg-none border-0  position-absolute close"><i class="fa-solid fa-xmark"></i></button>
+            <span class="circle1"></span>
+            <span class="circle2"> </span>
+            <span class="circle3"></span>
+            <p>Site Name or Url is not valid, Please follow the rules below :</p>
+            <ul class="list-unstyled">
+                <li><i class="fa-regular fa-circle-right"></i>Site name must contain at least 3 characters</li>
+                <li><i class="fa-regular fa-circle-right"></i>Site URL must be a valid one</li>
+            </ul>
+        </div>
+           
+    </div>
+    <div id="msg" class="d-none bg-white p-4 position-absolute rounded-2 top-50 start-50 translate-middle w-50 p-5 text-center fw-bold">
+     <button onclick="closerepeatedPopup()" class="bg-none border-0  position-absolute close"><i class="fa-solid fa-xmark"></i></button>
+
+       <p>this Data is repeated</p> 
+    </div>
+
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
