@@ -4,17 +4,15 @@ var submitBtn = document.getElementById("submitBtn");
 var updateBtn = document.getElementById("updateBtn");
 var table = document.querySelectorAll("th");
 var msg = document.getElementById("msg");
-var demo=document.getElementById("demo")
-
+var demo = document.getElementById("demo");
 
 submitBtn.addEventListener("click", function () {
   addData();
 });
 
-updateBtn.addEventListener("click",function(){
-  updatePress()
-})
-
+updateBtn.addEventListener("click", function () {
+  updatePress();
+});
 
 var arrData = [];
 if (localStorage.getItem("data") == null) {
@@ -24,31 +22,24 @@ if (localStorage.getItem("data") == null) {
   displayData();
 }
 
-
 function addData() {
   var data = {
     webName: bookmarkName.value,
     webLink: websiteUrl.value,
   };
 
- console.log(notRepeating())
+  console.log(notRepeating());
 
-  if (testReg() == true ) {
-
-    if(notRepeating()==true){
+  if (testReg() == true) {
+    if (notRepeating() == true) {
       arrData.push(data);
+    } else {
+      msg.classList.replace("d-none", "d-block");
     }
-    else{
-      msg.classList.replace("d-none","d-block")
-    }
-  
-
   } else {
-   demo.classList.replace("d-none", "d-block");
-
+    demo.classList.replace("d-none", "d-block");
   }
 
- 
   localStorage.setItem("data", JSON.stringify(arrData));
 
   displayData();
@@ -57,11 +48,9 @@ function addData() {
 
 function closePopup() {
   demo.classList.replace("d-block", "d-none");
-
 }
 
 function testReg() {
-
   var regexName = /^[a-z]{3,}$/;
   var regexUrl =
     /^(http:\/\/|https:\/\/)www\.[a-z]{3,}(\.com\/|\.org\/|\.com|\.org)$/;
@@ -90,10 +79,9 @@ function testReg() {
     }
   }
   if (bookstatus == true && urlstatus == true) {
-    return true
-  }
-  else{
-    return false
+    return true;
+  } else {
+    return false;
   }
 }
 
@@ -156,49 +144,43 @@ function deleteData(index) {
   displayData();
 }
 
+function update(index) {
+  bookmarkName.value = arrData[index].webName;
 
-function update(index){
-  
-  bookmarkName.value= arrData[index].webName
+  websiteUrl.value = arrData[index].webLink;
 
-  websiteUrl.value= arrData[index].webLink
+  submitBtn.classList.replace("d-block", "d-none");
+  updateBtn.classList.replace("d-none", "d-block");
 
-submitBtn.classList.replace("d-block","d-none")
-updateBtn.classList.replace("d-none","d-block")
-
-localStorage.setItem("newData",index)
+  localStorage.setItem("newData", index);
 }
 
-function updatePress(){
-  var newData=localStorage.getItem("newData")
+function updatePress() {
+  var newData = localStorage.getItem("newData");
 
-  arrData[newData].webName= bookmarkName.value
-  arrData[newData].webLink= websiteUrl.value
-  localStorage.setItem("data",JSON.stringify(arrData))
-  localStorage.removeItem("newData")
-submitBtn.classList.replace("d-none","d-block")
-updateBtn.classList.replace("d-block","d-none")
+  arrData[newData].webName = bookmarkName.value;
+  arrData[newData].webLink = websiteUrl.value;
+  localStorage.setItem("data", JSON.stringify(arrData));
+  localStorage.removeItem("newData");
+  submitBtn.classList.replace("d-none", "d-block");
+  updateBtn.classList.replace("d-block", "d-none");
   displayData();
   clearData();
-
 }
 
-function notRepeating(){
- var x = JSON.parse(localStorage.getItem("data"))
-var status = true
- for(var i=0; i<x.length; i++){
-
-  if(bookmarkName.value==x[i].webName){
-
-    status = false
+function notRepeating() {
+  var x = JSON.parse(localStorage.getItem("data"));
+  var status = true;
+  if (x && x.length > 0) {
+    for (var i = 0; i < x.length; i++) {
+      if (bookmarkName.value == x[i].webName) {
+        status = false;
+      }
+    }
   }
-  
- }
-return status;
+  return status;
 }
 
-
-function closerepeatedPopup(){
-    msg.classList.replace("d-block","d-none")
-
+function closerepeatedPopup() {
+  msg.classList.replace("d-block", "d-none");
 }
