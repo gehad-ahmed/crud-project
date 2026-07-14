@@ -1,5 +1,7 @@
 # 📦 Product CRUD App
 
+> 🔗 **Live Demo:** [https://gehad-ahmed.github.io/crud-project/](https://gehad-ahmed.github.io/crud-project/)
+
 A products management app with full **Create, Read, Update and Delete** operations and search, built with vanilla JavaScript and persisted in the browser using localStorage.
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
